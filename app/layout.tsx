@@ -31,8 +31,8 @@ export default function RootLayout({
       >
         <ResumeProvider>
           <Navbar />
+          {children}
         </ResumeProvider>
-        {children}
       </body>
     </html>
   );
