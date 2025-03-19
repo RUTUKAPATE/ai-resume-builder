@@ -1,6 +1,10 @@
+import ToggleMode from "@/components/toggle-mode/toggle-mode";
+
 const Home = () => {
   return (
-    <div>Home page</div>
+    <div>
+      <ToggleMode />
+    </div>
   )
 }
 
