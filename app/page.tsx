@@ -1,14 +1,4 @@
-import ToggleMode from "@/components/toggle-mode/toggle-mode";
-
-const Home = () => {
-  return (
-    <div>
-      <ToggleMode />
-    </div>
-  )
-}
-
-export default Home;import Link from "next/link";
+import Link from "next/link";
 
 export default function Home() {
 	return (
