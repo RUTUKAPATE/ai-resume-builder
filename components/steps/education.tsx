@@ -1,15 +1,21 @@
 import { ResumeContext } from "@/context/resume";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const Education = () => {
 	const ctx = useContext(ResumeContext);
+
+	// Ensure ctx is available
+	if (!ctx) {
+		return <p>Loading...</p>; // Handle cases where context is not available
+	}
+
 	const {
 		handleEducationChange,
 		handleEducationSubmit,
 		addEducation,
 		removeEducation,
 		educations,
-	} = ctx!;
+	} = ctx;
 
 	return (
 		<div>
@@ -17,20 +23,24 @@ const Education = () => {
 			<form className="w-full" onSubmit={handleEducationSubmit}>
 				{educations.map((edu, i) => (
 					<div key={i} className="mb-5 space-y-4">
-						<input
-							type="text"
+						<select
 							name="degree"
-							placeholder="Degree"
-							value={edu?.degree}
-							className="input input-bordered w-full"
+							value={edu?.degree || ""}
+							className="select select-bordered w-full"
 							onChange={(e) => handleEducationChange(e, i)}
 							required
-						/>
+						>
+							<option value="" disabled>
+								Select Degree
+							</option>
+							<option value="B.Tech">B.Tech</option>
+							<option value="M.Tech">M.Tech</option>
+						</select>
 						<input
 							type="text"
 							name="year"
 							placeholder="Completed year"
-							value={edu?.year}
+							value={edu?.year || ""}
 							className="input input-bordered w-full"
 							onChange={(e) => handleEducationChange(e, i)}
 							required
@@ -39,7 +49,7 @@ const Education = () => {
 							type="text"
 							name="university"
 							placeholder="School/College/University"
-							value={edu?.university}
+							value={edu?.university || ""}
 							className="input input-bordered w-full"
 							onChange={(e) => handleEducationChange(e, i)}
 							required
